@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>د. وليد فايز فهمي | استشاري جراحة العظام</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+    --primary: #1a3d6c; /* أزرق خفيف */
+    --secondary: #c9a44c;
+    --light: #e8f0fb;   /* خلفية فاتحة زرقاء */
+    --text: #333;
+    --gold-light: rgba(201,164,76,0.2);
+}
+
+body {
+    margin: 0;
+    font-family: 'Cairo', sans-serif;
+    background: var(--light);
+    color: var(--text);
+
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 50px 20px;
+}
+
+/* ===== Hero ===== */
+.hero {
+    background: linear-gradient(135deg, #0d2b45, #143a5f); /* اللون الغامق كما كان */
+    color: #fff;
+    border-radius: 20px;
+    padding: 50px 40px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+}
+.hero img {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 6px solid var(--secondary);
+    background: #fff;
+}
+.hero h1 { margin: 0; font-size: 36px;    font-weight: 700;}
+.hero h3 { margin: 10px 0; font-weight: normal; color: #e0e6ee;  font-weight: 600; }
+.badges { margin-top: 15px; }
+.badge {
+    display: inline-block;
+    background: var(--gold-light);
+    padding: 8px 16px;
+    border-radius: 25px;
+    font-size: 15px;
+    margin-left: 10px;
+    font-weight: bold;
+}
+.contact {
+    margin-top: 20px;
+    font-size: 16px;
+}
+.contact div {
+    margin-bottom: 10px;
+    display: inline-block;
+    background: var(--gold-light);
+    padding: 6px 12px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.contact div:hover {
+    transform: translateY(-3px);   /* يرتفع قليلاً */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2); /* ظل خفيف */
+    background: rgba(201,164,76,0.35); /* لمعة خفيفة */
+}
+
+/* ===== Sections ===== */
+section {
+    margin-top: 50px;
+    opacity: 0; /* يبدأ مخفي */
+    transform: translateY(40px);
+    transition: all 0.8s ease-out;
+}
+section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+.card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+}
+section h2 {
+    color: var(--primary);
+    margin-bottom: 25px;
+    position: relative;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+section h2::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: -12px; /* نزّل الخط شويه */
+    width: 100px;   /* عرض أكبر */
+    height: 6px;    /* سماكة أكبر */
+    background: #5a8fd6; /* أزرق فاتح */
+    border-radius: 6px;
+    box-shadow: 0 3px 10px rgba(90,143,214,0.5); /* لمسة فخامة */
+}
+
+/* ===== Summary ===== */
+.summary {
+    font-size: 18px;
+    line-height: 2;
+    background: linear-gradient(135deg, #fdfdfd, #e8f0fb);
+    border-right: 6px solid var(--primary);
+    padding: 50px 40px;
+}
+
+/* ===== Experience Timeline ===== */
+.timeline { position: relative; padding-right: 30px; }
+.timeline::before {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--primary);
+    border-radius: 5px;
+}
+.item { margin-bottom: 30px; padding-right: 25px; }
+.item h4 { margin: 0; color: var(--primary); font-size: 20px; }
+.item ul { margin: 12px 0 0; }
+.item li { margin-bottom: 8px; font-weight: 400; }
+
+/* ===== Lists/Grid ===== */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+.grid li {
+    background: #f8fafc;
+    padding: 15px 20px;
+    border-radius: 15px;
+    border-right: 5px solid var(--primary);
+    list-style: none;
+    font-weight: 400;
+}
+
+/* ===== Video Section ===== */
+.video-container {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+.video-item {
+    flex: 1 1 48%;
+    min-width: 300px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    .hero { flex-direction: column; text-align: center; }
+    .badge { margin-bottom: 8px; }
+}
+</style>
+
+<style>
+/* ===== Loder ===== */
+#loader {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: #0d2b45; /* نفس لون الهيرو */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease;
+}
+
+.spinner {
+    border: 6px solid #f3f3f3; /* خلفية داكنة للخلفية */
+    border-top: 6px solid #c9a44c; /* لون الذهب */
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg);}
+    100% { transform: rotate(360deg);}
+}
+</style>
+
+</head>
+<body>
+
+  <div id="loader">
+      <div class="spinner"></div>
+  </div>
+
+
+<div class="container">
+
+    <!-- Hero -->
+    <div class="hero">
+        <img src="doctor.jpeg" alt="د. وليد فايز فهمي">
+        <div>
+            <h1>د. وليد فايز فهمي</h1>
+            <h3>دكتوراه جراحة العظام والكسور – قصر العيني</h3>
+            <div class="badges">
+                <span class="badge">MRCS – England</span>
+                <span class="badge">ISTP Fellowship</span>
+                <span class="badge">15+ سنة خبرة</span>
+            </div>
+            <div class="contact">
+                <div>📧 wfayezfahmy@gmail.com</div>
+                <div>📞 01555150110</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Summary -->
+    <section>
+        <div class="card summary">
+            <h2>الملخص المهني</h2>
+            استشاري جراحة عظام عسكري متقاعد، يتمتع بخبرة تزيد عن 15 عاماً في
+            جراحات استبدال المفاصل، جراحة الركبة، وتصحيح التشوهات باستخدام
+            أحدث الأساليب الطبية المتقدمة.
+        </div>
+    </section>
+
+    <!-- Experience -->
+    <section>
+        <div class="card">
+            <h2>الخبرات العملية</h2>
+            <div class="timeline">
+                <div class="item">
+                    <h4>يونيو 2024 – حتى الآن</h4>
+                    <ul>
+                        <li>استشاري جراحة العظام – مستشفى أندلسية (دوام كامل)</li>
+                        <li>المركز الطبي العالمي – دوام جزئي</li>
+                        <li>مستشفى الهلال العسكري – دوام جزئي</li>
+                    </ul>
+                </div>
+                <div class="item">
+                    <h4>يونيو 2023 – يونيو 2024</h4>
+                    <ul>
+                        <li>مستشفى الهلال الأحمر – جراحات إليزاروف وتصحيح التشوهات</li>
+                        <li>مستشفى هليوبوليس – استبدال المفاصل وجراحة الركبة</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education -->
+    <section>
+        <div class="card">
+            <h2>المؤهلات العلمية</h2>
+            <ul class="grid">
+                <li>دكتوراه جراحة العظام – قصر العيني (2022)</li>
+                <li>ISTP Fellowship – الكلية الملكية للجراحين</li>
+                <li>MRCS – إنجلترا</li>
+                <li>ماجستير جراحة العظام – عين شمس</li>
+                <li>بكالوريوس طب وجراحة – امتياز مع مرتبة الشرف</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Specialties -->
+    <section>
+        <div class="card">
+            <h2>التخصصات الدقيقة</h2>
+            <ul class="grid">
+                <li>استبدال المفاصل الأولية والمراجعة</li>
+                <li>جراحة الركبة والمناظير</li>
+                <li>كسور وإصابات الأطفال</li>
+                <li>التثبيت الخارجي وجراحات إليزاروف</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Medical Info Section -->
+    <section>
+        <div class="card">
+            <h2>معلومات طبية</h2>
+            <div class="video-container">
+                <div class="video-item">
+                    <iframe width="100%" height="250" src="video1.mp4" allowfullscreen></iframe>
+                </div>
+                <div class="video-item">
+                    <iframe width="100%" height="250" src="video2.mp4" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<script>
+// Animation عند التمرير
+const sections = document.querySelectorAll('section');
+
+function revealSections() {
+    const triggerBottom = window.innerHeight / 5 * 4;
+    sections.forEach(section => {
+        const sectionTop = section.getBoundingClientRect().top;
+        if(sectionTop < triggerBottom) {
+            section.classList.add('visible');
+        }
+    });
+}
+
+window.addEventListener('scroll', revealSections);
+window.addEventListener('load', revealSections);
+</script>
+
+
+<script>
+// لودنج لمدة 2 ثانية
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        const loader = document.getElementById('loader');
+        loader.style.opacity = '0';
+        setTimeout(() => loader.style.display = 'none', 500); // بعد اختفاء تدريجي
+    }, 1500); // مدة الانتظار 2 ثانية
+});
+</script>
+</body>
+</html>
